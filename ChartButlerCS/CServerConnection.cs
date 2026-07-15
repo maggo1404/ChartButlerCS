@@ -58,6 +58,7 @@ namespace ChartButlerCS
         {
             this.parent = parent;
             this.chartButlerDataset = chartButlerDataSet;
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(Utility.USER_AGENT);  
         }
 
         private static bool ServerCertificateValidationCallback(object sender, 
