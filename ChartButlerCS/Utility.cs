@@ -32,6 +32,7 @@ namespace ChartButlerCS
         {
             using (WebClient dlcl = new WebClient())
             {
+                dlcl.Headers.Add(HttpRequestHeader.UserAgent, USER_AGENT);
                 dlcl.DownloadFile(new Uri(URL), filePath);
             }
         }
@@ -44,6 +45,7 @@ namespace ChartButlerCS
         public static string GetURLText(string URL, RemoteCertificateValidationCallback serverCertificateValidationCallback)
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(URL);
+            request.UserAgent = USER_AGENT;     
             request.ServerCertificateValidationCallback += serverCertificateValidationCallback;
             request.Method = "GET";
             request.ContentType = "text/html;charset=iso-8859-1";
